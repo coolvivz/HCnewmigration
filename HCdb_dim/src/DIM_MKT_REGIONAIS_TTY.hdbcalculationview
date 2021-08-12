@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAIS_TTY" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_REGIONAIS_TTY"/>
+  <metadata changedAt="2021-07-23 10:51:27.315"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="41"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_CUP_REGIONAIS">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CUP_REGIONAIS</resourceUri>
+    </DataSource>
+    <DataSource id="Aggregation_1$$$$HDW_IN_DM_MKT_CUP_REGIONAIS$$">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CUP_REGIONAIS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute aggregationType="min" id="DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_1$$$$HDW_IN_DM_MKT_CUP_REGIONAIS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="DSCREGIAO"/>
+        <viewAttribute id="REGIONAL"/>
+        <viewAttribute hidden="true" id="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_CUP_REGIONAIS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIAO" source="DSCREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL" source="REGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <joinAttribute name="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGREGIAO" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGREGIAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="DSCREGIAO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DSCREGIAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCREGIAO"/>
+      </attribute>
+      <attribute id="REGIONAL" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGIONAL"/>
+        <keyMapping columnObjectName="Join_1" columnName="REGIONAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="34" y="110"/>
+        <rectangleSize height="64" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="48" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="48" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_ORIGEM"/>
+  <metadata changedAt="2017-07-06 14:04:01.451" createdAt="2017-07-06 14:04:00.867"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_ORIGEM">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_ORIGEM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="HDW_IN_DM_MKT_ORIGEM">
+    <descriptions defaultDescription="DIM_MKT_ORIGEM"/>
+    <attributes>
+      <attribute id="CDGORIGEM" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCORIGEM" displayAttribute="false">
+        <descriptions defaultDescription="Origem"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_ORIGEM" columnName="CDGORIGEM"/>
+      </attribute>
+      <attribute id="DSCORIGEM" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Origem"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_ORIGEM" columnName="DSCORIGEM"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

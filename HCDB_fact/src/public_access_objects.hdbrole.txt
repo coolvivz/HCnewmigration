@@ -1,0 +1,166 @@
+{
+    "role": {
+        "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::PublicAccessObjects",
+        "object_privileges": [
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::COPYOFFACT_MKT_CUP_CUSTOMIZED_3",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::COPYOFFACT_MKT_MERCADO_BU",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::COPYOFFACT_MKT_PRODUTO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::COPYOFFACT_MKT_PRODUTO_SEM_MERCADO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_CUSTOMIZED",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_CUSTOMIZED_2",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_CUSTOMIZED_FILTER",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_MFT_1",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_MFT_2",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_MERCADO_BU",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRESCRICAO_EXPORT",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_AFO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_RANK",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_SEM_FILTRO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_SEM_MERCADO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_TESTE",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::FACT_MKT_LABORATORIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::FACT_MKT_LABORATORIO_SCRIPT",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::TABLE_FUNCTION_FACT_MKT_LABORATORIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::TABLE_FUNCTION_FACT_MKT_LABORATORIO_SCRIPT",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "..grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::TABLE_FUNCTION_FACT_MKT_LABORATORIO",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "..grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::TABLE_FUNCTION_FACT_MKT_LABORATORIO_SCRIPT",
+                "privileges": [
+                    "SELECT"
+                ]
+            }
+        ]
+    }
+}

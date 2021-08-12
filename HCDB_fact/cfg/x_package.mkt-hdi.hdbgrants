@@ -1,0 +1,22 @@
+{
+    "HCmigration-hdiHCdb_dim-ws-wgw9b": {
+        "object_owner": {
+            "schema_roles": [
+                {
+                    "roles": [
+                        "grupo_fqm.intmerc_prod.x_package.mkt.dim::PublicAccessSchema#"
+                    ]
+                }
+            ]
+        },
+        "application_user": {
+            "schema_roles": [
+                {
+                    "roles": [
+                        "grupo_fqm.intmerc_prod.x_package.mkt.dim::PublicAccessSchema"
+                    ]
+                }
+            ]
+        }
+    }
+}

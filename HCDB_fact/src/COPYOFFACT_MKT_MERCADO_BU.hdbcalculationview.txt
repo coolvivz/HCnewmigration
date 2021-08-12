@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="grupo_fqm.intmerc_prod.x_package.mkt.fact::COPYOFFACT_MKT_MERCADO_BU" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="true" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED">
+<origin/>
+  <descriptions defaultDescription="FACT_MKT_PRODUTO"/>
+  <metadata changedAt="2018-06-05 10:47:06.034" createdAt="2018-06-05 10:47:06.034"/>
+  <localVariables>
+    <variable id="IN_MERCADO_BU" parameter="true">
+      <descriptions defaultDescription="MERCADO/BUSINESS UNIT"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" length="30" mandatory="true" scale="0">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_BU</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>MERCADO_BU</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="IN_TIPO_MERCADO" parameter="true">
+      <descriptions defaultDescription="TIPO MERCADO"/>
+      <variableProperties datatype="VARCHAR" defaultValue="FQM" length="10" mandatory="true" scale="0">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_TIPO_MERCADO</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>TPMERCADO</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO">
+      <targetVariable name="IN_MERCADO_BU" resourceUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO"/>
+      <localVariable>IN_MERCADO_BU</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO">
+      <targetVariable name="IN_TIPO_MERCADO" resourceUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO"/>
+      <localVariable>IN_TIPO_MERCADO</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="39"/>
+  <dataSources>
+    <DataSource id="DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_TR_MKT_PRESCRICAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="UNID_NEGOCIO"/>
+        <viewAttribute id="TPMERCADO"/>
+        <viewAttribute id="MERCADO"/>
+        <viewAttribute id="CDGPRODUTO"/>
+        <viewAttribute id="DSCPRODUTO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO"/>
+    <filter>&quot;UNID_NEGOCIO&quot; = SUBSTR_AFTER('$$IN_MERCADO_BU$$','_') AND &quot;MERCADO&quot; = SUBSTR_BEFORE('$$IN_MERCADO_BU$$','_') AND &quot;TPMERCADO&quot; = '$$IN_TIPO_MERCADO$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="TPMERCADO"/>
+        <viewAttribute id="MERCADO"/>
+        <viewAttribute id="UNID_NEGOCIO"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="DATA"/>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute id="CDGPRODUTO"/>
+        <viewAttribute id="DSCPRODUTO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TPMERCADO" source="TPMERCADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MERCADO" source="MERCADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNID_NEGOCIO" source="UNID_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGPRODUTO" source="CDGPRODUTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCPRODUTO" source="DSCPRODUTO"/>
+      </input>
+      <input node="HDW_IN_TR_MKT_PRESCRICAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="DTPRESCRICAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA" source="DATA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGORIGEM" source="CDGORIGEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGPRODUTO" source="CDGPRODUTO"/>
+      </input>
+    <joinAttribute name="CDGPRODUTO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="TPMERCADO"/>
+        <viewAttribute id="MERCADO"/>
+        <viewAttribute id="UNID_NEGOCIO"/>
+        <viewAttribute id="PERIODO"/>
+        <viewAttribute id="DATA"/>
+        <viewAttribute id="DSCPRODUTO"/>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute aggregationType="sum" id="PX"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERIODO" source="DTPRESCRICAO"/></input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Aggregation_1">
+    <descriptions defaultDescription="FACT_MKT_PRODUTO"/>
+    <attributes>
+      <attribute id="TPMERCADO" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo Mercado"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="TPMERCADO"/>
+      </attribute>
+      <attribute id="MERCADO" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mercado"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MERCADO"/>
+      </attribute>
+      <attribute id="UNID_NEGOCIO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unid.Negócio"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="UNID_NEGOCIO"/>
+      </attribute>
+      <attribute id="DATA" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Data"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="DATA"/>
+      </attribute>
+      <attribute id="DSCPRODUTO" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Produto"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="DSCPRODUTO"/>
+      </attribute>
+      <attribute id="PERIODO$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="CDGMARCA$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGESPECIALIDADE$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="CDGORIGEM$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGORIGEM"/>
+      </attribute>
+      <attribute id="CDGREGIAO$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="CDGLABORATORIO$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGLABORATORIO"/>
+      </attribute>
+      <attribute id="CDGCLASSE$local">
+        <keyMapping columnObjectName="Aggregation_1" columnName="CDGCLASSE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PX" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PX"/>
+        <measureMapping columnObjectName="Aggregation_1" columnName="PX"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="PX_FQM" hidden="false" order="7" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="0">
+        <descriptions defaultDescription="PX FQM"/>
+        <formula>IF(&quot;CDGCORPORACAO&quot;='FQM',&quot;PX&quot;,0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME">
+        <attributes>
+          <attributeRef>PERIODO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>PERIODO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_PERIODO">
+          <joinProperties nodeElementName="HI_PERIODONode" expressionParameterName="HI_PERIODOExpression"/>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MARCA">
+        <attributes>
+          <attributeRef>CDGMARCA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGMARCAS</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CONCENTRACAO">
+        <attributes>
+          <attributeRef>CDGCONCENTRACAO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGCONCENTRACAO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MKT_CONCENTRACAO_CDGCONCENTRACAO" attributeName="CDGCONCENTRACAO"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA">
+        <attributes>
+          <attributeRef>CDGFORMA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGFORMAS</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_PRODUTO">
+        <attributes>
+          <attributeRef>CDGMARCA$local</attributeRef>
+          <attributeRef>CDGCONCENTRACAO$local</attributeRef>
+          <attributeRef>CDGAPRESENTACAO$local</attributeRef>
+          <attributeRef>CDGFORMA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGMARCA</attributeName>
+          <attributeName>CDGCONCENTRACAO</attributeName>
+          <attributeName>CDGAPRESENTACAO</attributeName>
+          <attributeName>CDGFORMA</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_PRODUTO">
+          <joinProperties nodeElementName="HI_PRODUTONode" expressionParameterName="HI_PRODUTOExpression"/>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE">
+        <attributes>
+          <attributeRef>CDGESPECIALIDADE$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGESPECIALIDADE</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM">
+        <attributes>
+          <attributeRef>CDGORIGEM$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGORIGEM</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_MERCADO_BU_FILTRO">
+        <attributes>
+          <attributeRef>CDGREGIAO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGREGIAO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_REG">
+          <joinProperties nodeElementName="HI_REGNode" expressionParameterName="HI_REGExpression"/>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO">
+        <attributes>
+          <attributeRef>CDGLABORATORIO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGLABORATORIO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_CORPORACAO">
+          <joinProperties nodeElementName="HI_CORPORACAONode" expressionParameterName="HI_CORPORACAOExpression"/>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES">
+        <attributes>
+          <attributeRef>CDGCLASSE$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGCLASSES</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true" joinOperator="Equal"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_CLASSE">
+          <joinProperties nodeElementName="HI_CLASSENode" expressionParameterName="HI_CLASSEExpression"/>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="539"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="443"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="365"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Aggregation_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="629" y="208"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="16"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MARCA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="48"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CONCENTRACAO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="225"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="322"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_PRODUTO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="145"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="419"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="516"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_MERCADO_BU_FILTRO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="354"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="903" y="613"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="515"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

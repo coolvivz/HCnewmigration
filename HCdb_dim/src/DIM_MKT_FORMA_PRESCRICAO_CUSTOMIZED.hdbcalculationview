@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA_PRESCRICAO_CUSTOMIZED" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_FORMA"/>
+  <metadata changedAt="2021-01-06 11:57:06.148"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="46"/>
+  <dataSources>
+    <DataSource id="HDW_OUT_TR_MKT_PRESCRICAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_OUT_TR_MKT_PRESCRICAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="HDW_OUT_TR_MKT_PRESCRICAO">
+    <descriptions/>
+    <attributes>
+      <attribute id="codigomarca" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigomarca"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigomarca"/>
+      </attribute>
+      <attribute id="codigoconcent" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoconcent"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoconcent"/>
+      </attribute>
+      <attribute id="codigoapres" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoapres"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoapres"/>
+      </attribute>
+      <attribute id="codigoforma" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoforma"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoforma"/>
+      </attribute>
+      <attribute id="codigoespec" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoespec"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoespec"/>
+      </attribute>
+      <attribute id="codigoorigem" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoorigem"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoorigem"/>
+      </attribute>
+      <attribute id="codigoregiao" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoregiao"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoregiao"/>
+      </attribute>
+      <attribute id="codigolab" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigolab"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigolab"/>
+      </attribute>
+      <attribute id="codigoclasse" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="codigoclasse"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="codigoclasse"/>
+      </attribute>
+      <attribute id="px" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="px"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="px"/>
+      </attribute>
+      <attribute id="data" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="data"/>
+        <keyMapping columnObjectName="HDW_OUT_TR_MKT_PRESCRICAO" columnName="data"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="PharmaMixCod" hidden="false" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PharmaMixCod"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="500">
+          <formula>&quot;codigomarca&quot; + ' &amp; ' + &quot;codigoconcent&quot; + ' &amp; ' +  &quot;codigoapres&quot; + ' &amp; ' +  &quot;codigoforma&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

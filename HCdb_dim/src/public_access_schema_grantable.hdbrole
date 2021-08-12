@@ -1,0 +1,13 @@
+{
+    "role": {
+        "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::PublicAccessSchema#",
+        "schema_privileges": [
+            {
+                "privileges_with_grant_option": [
+                    "SELECT",
+                    "EXECUTE"
+                ]
+            }
+        ]
+    }
+}

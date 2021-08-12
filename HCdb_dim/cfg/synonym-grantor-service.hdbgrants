@@ -1,0 +1,348 @@
+{
+    "HCtrial": {
+        "object_owner": {
+            "object_privileges": [
+                {
+                    "name": "HDW_IN_DM_MKT_LABORATORIO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CORPORACAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIAO_X_REGIONAL",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSES",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE1",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE2",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE3",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CONCENTRACAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ESPECIALIDADE",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_ESPECIALIDADES",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FORMAS",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_OUT_TR_MKT_PRESCRICAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FQM_LABORATORIOS",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PRODUTO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MARCAS",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MERCADO_APRESENTACAO",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MOLECULA",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ORIGEM",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PERIODO_NOME",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_REGIONAIS",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIONAL",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_UNIDADE_NEGOCIO",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                }
+            ]
+        },
+        "application_user": {
+            "object_privileges": [
+                {
+                    "name": "HDW_IN_DM_MKT_LABORATORIO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CORPORACAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIAO_X_REGIONAL",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSES",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE1",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE2",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CLASSE3",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CONCENTRACAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ESPECIALIDADE",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_ESPECIALIDADES",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FORMAS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_OUT_TR_MKT_PRESCRICAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FQM_LABORATORIOS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PRODUTO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MARCAS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MERCADO_APRESENTACAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MOLECULA",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ORIGEM",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PERIODO_NOME",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_REGIONAIS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_REGIONAL",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_UNIDADE_NEGOCIO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                }
+            ]
+        }
+    }
+}

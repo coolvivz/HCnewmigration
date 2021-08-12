@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_MERCADO_BU_FILTRO" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Regional, Região"/>
+  <metadata changedAt="2017-10-30 09:42:35.051"/>
+  <localVariables>
+    <variable id="IN_MERCADO_BU" parameter="true">
+      <descriptions defaultDescription="MERCADO/BUSINESS UNIT"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" length="30" mandatory="true" scale="0">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_BU</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>MERCADO_BU</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="42"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_REGIAO_X_REGIONAL">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_REGIAO_X_REGIONAL</resourceUri>
+    </DataSource>
+    <DataSource id="Projection_1$$$$HDW_IN_DM_MKT_REGIAO_X_REGIONAL$$">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_REGIAO_X_REGIONAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_REGIONAL">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_UNIDADE_NEGOCIO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_UNIDADE_NEGOCIO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_REGIAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute aggregationType="max" id="DATA_ATUALIZACAO"/>
+        <viewAttribute id="CDGAUDITORIA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_REGIAO_X_REGIONAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAUDITORIA" source="CDGAUDITORIA"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="CDGREGIONAL"/>
+        <viewAttribute id="DATA_ATUALIZACAO"/>
+        <viewAttribute id="CDGAUDITORIA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1$$$$HDW_IN_DM_MKT_REGIAO_X_REGIONAL$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAUDITORIA" source="CDGAUDITORIA"/>
+      </input>
+      <filter>&quot;CDGUNIDADE_NEGOCIO&quot; = SUBSTR_AFTER('$$IN_MERCADO_BU$$','_') AND &quot;CDGAUDITORIA&quot; = 'CUP_MKT'</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="CDGREGIONAL"/>
+        <viewAttribute hidden="true" id="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+        <viewAttribute hidden="true" id="JOIN$CDGAUDITORIA$CDGAUDITORIA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGAUDITORIA$CDGAUDITORIA" source="CDGAUDITORIA"/>
+      </input>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGAUDITORIA$CDGAUDITORIA" source="CDGAUDITORIA"/>
+      </input>
+      <joinAttribute name="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+      <joinAttribute name="JOIN$CDGAUDITORIA$CDGAUDITORIA"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="CDGREGIONAL"/>
+        <viewAttribute id="DSCREGIONAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+      </input>
+      <input node="#DIM_MKT_REGIONAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIONAL" source="DSCREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+      </input>
+      <joinAttribute name="CDGREGIONAL"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="DSCUNIDADE_NEGOCIO"/>
+        <viewAttribute id="CDGREGIONAL"/>
+        <viewAttribute id="DSCREGIONAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIONAL" source="DSCREGIONAL"/>
+      </input>
+      <input node="#DIM_MKT_UNIDADE_NEGOCIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCUNIDADE_NEGOCIO" source="DSCUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+      </input>
+      <joinAttribute name="CDGUNIDADE_NEGOCIO"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="DSCUNIDADE_NEGOCIO"/>
+        <viewAttribute id="CDGREGIONAL"/>
+        <viewAttribute id="DSCREGIONAL"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="DSCREGIAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCUNIDADE_NEGOCIO" source="DSCUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIONAL" source="CDGREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIONAL" source="DSCREGIONAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+      </input>
+      <input node="#DIM_MKT_REGIAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIAO" source="DSCREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+      </input>
+      <joinAttribute name="CDGREGIAO"/>
+    </calculationView>
+  </calculationViews>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="HI_REG" aggregateAllNodes="true" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_ONLY">
+    <descriptions defaultDescription="Regional, Região"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <levels>
+      <level levelAttribute="#CDGREGIONAL" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CDGREGIONAL"/>
+      <level levelAttribute="#CDGREGIAO" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CDGREGIAO"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="Join_4">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGUNIDADE_NEGOCIO" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCUNIDADE_NEGOCIO" displayAttribute="false">
+        <descriptions defaultDescription="Unidade Negócio"/>
+        <keyMapping columnObjectName="Join_4" columnName="CDGUNIDADE_NEGOCIO"/>
+      </attribute>
+      <attribute id="DSCUNIDADE_NEGOCIO" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Unidade Negócio"/>
+        <keyMapping columnObjectName="Join_4" columnName="DSCUNIDADE_NEGOCIO"/>
+      </attribute>
+      <attribute id="CDGREGIONAL" key="true" order="3" attributeHierarchyActive="false" descriptionColumnName="DSCREGIONAL" displayAttribute="false">
+        <descriptions defaultDescription="Regional"/>
+        <keyMapping columnObjectName="Join_4" columnName="CDGREGIONAL"/>
+      </attribute>
+      <attribute id="DSCREGIONAL" hidden="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Regional"/>
+        <keyMapping columnObjectName="Join_4" columnName="DSCREGIONAL"/>
+      </attribute>
+      <attribute id="CDGREGIAO" key="true" order="5" attributeHierarchyActive="false" descriptionColumnName="DSCREGIAO" displayAttribute="false">
+        <descriptions defaultDescription="Região"/>
+        <keyMapping columnObjectName="Join_4" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="DSCREGIAO" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Região"/>
+        <keyMapping columnObjectName="Join_4" columnName="DSCREGIAO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

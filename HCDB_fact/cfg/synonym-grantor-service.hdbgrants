@@ -1,0 +1,152 @@
+{
+    "HCtrial": {
+        "object_owner": {
+            "object_privileges": [
+                {
+                    "name": "HDW_IN_TR_MKT_PRESCRICAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_PERIODO_ATUAL",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MARCAS",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FORMAS",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CONCENTRACAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_REGIOES",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ESPECIALIDADE",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_OUT_TR_MKT_PRESCRICAO",
+                    "schema": "S_CUP_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PERIODO_NOME",
+                    "schema": "S_TTY_MKT",
+                    "privileges_with_grant_option": [
+                        "SELECT"
+                    ]
+                }
+            ]
+        },
+        "application_user": {
+            "object_privileges": [
+                {
+                    "name": "HDW_IN_TR_MKT_PRESCRICAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_PERIODO_ATUAL",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_MARCAS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_FORMAS",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CONCENTRACAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_CUP_REGIOES",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_ESPECIALIDADE",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_OUT_TR_MKT_PRESCRICAO",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_CUP_MKT"
+                },
+                {
+                    "name": "HDW_IN_DM_MKT_PERIODO_NOME",
+                    "privileges": [
+                        "SELECT"
+                    ],
+                    "schema": "S_TTY_MKT"
+                }
+            ]
+        }
+    }
+}

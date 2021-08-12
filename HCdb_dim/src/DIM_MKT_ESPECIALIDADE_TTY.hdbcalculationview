@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE_TTY" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_ESPECIALIDADE_TTY"/>
+  <metadata changedAt="2021-07-23 10:56:18.445"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_CUP_ESPECIALIDADES">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CUP_ESPECIALIDADES</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="HDW_IN_DM_MKT_CUP_ESPECIALIDADES">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGESPECIALIDADE" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGESPECIALIDADE"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_CUP_ESPECIALIDADES" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="DSCESPECIALIDADE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DSCESPECIALIDADE"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_CUP_ESPECIALIDADES" columnName="DSCESPECIALIDADE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

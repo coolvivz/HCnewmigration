@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FQM_LABORATORIOS" applyPrivilegeType="NONE" cacheInvalidationPeriod="DAILY" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_FQM_LABORATORIOS"/>
+  <metadata changedAt="2018-07-06 09:10:06.371"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="34"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_FQM_LABORATORIOS">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_FQM_LABORATORIOS</resourceUri>
+    </DataSource>
+    <DataSource id="Join_1$$$$HDW_IN_DM_MKT_FQM_LABORATORIOS$$">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_FQM_LABORATORIOS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute aggregationType="max" id="DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_FQM_LABORATORIOS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGPRODUTO"/>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CODCORPORACAO"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGLABORATORIO_FQM"/>
+        <viewAttribute id="DSCLABORATORIO_FQM"/>
+        <viewAttribute hidden="true" id="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1$$$$HDW_IN_DM_MKT_FQM_LABORATORIOS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGPRODUTO" source="CDGPRODUTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CODCORPORACAO" source="CODCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO_FQM" source="CDGLABORATORIO_FQM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_FQM" source="DSCLABORATORIO_FQM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <joinAttribute name="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGPRODUTO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGPRODUTO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGPRODUTO"/>
+      </attribute>
+      <attribute id="CDGMARCA" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGMARCA"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGCONCENTRACAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGAPRESENTACAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA" key="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGFORMA"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CODCORPORACAO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODCORPORACAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CODCORPORACAO"/>
+      </attribute>
+      <attribute id="DSCAPRESENTACAO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DSCAPRESENTACAO"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGLABORATORIO_FQM" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGLABORATORIO_FQM"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGLABORATORIO_FQM"/>
+      </attribute>
+      <attribute id="DSCLABORATORIO_FQM" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DSCLABORATORIO_FQM"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCLABORATORIO_FQM"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

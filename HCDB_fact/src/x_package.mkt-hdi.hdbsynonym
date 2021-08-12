@@ -1,0 +1,74 @@
+{
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_REGIONAIS_TTY": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAIS_TTY"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_PRODUTO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CLASSES"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_ESPECIALIDADE_TTY": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE_TTY"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_BU": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_BU"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_TIPO_MERCADO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_TIPO_MERCADO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_UNIDADE_NEGOCIO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_UNIDADE_NEGOCIO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_MERCADO_APRESENTACAO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_APRESENTACAO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_LABORATORIO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_FQM_LABORATORIOS": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FQM_LABORATORIOS"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO_FQM_LABORATORIO": {
+        "target": {
+            "schema": "HCDB_DIM_1",
+            "object": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_LABORATORIO_FQM_LABORATORIO"
+        }
+    }
+}

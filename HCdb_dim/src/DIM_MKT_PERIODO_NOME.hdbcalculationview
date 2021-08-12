@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="MAT, TRI, PER"/>
+  <metadata changedAt="2017-10-18 20:03:21.461"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_PERIODO_NOME">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_PERIODO_NOME</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="HI_PERIODO" aggregateAllNodes="true" cacheEnabled="false" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_ONLY">
+    <descriptions defaultDescription="MAT, TRI, PER"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <levels>
+      <level levelAttribute="#CDGMAT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CDGMAT"/>
+      <level levelAttribute="#CDGTRI" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CDGTRI"/>
+      <level levelAttribute="#CDGPER" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#CDGPER"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="HDW_IN_DM_MKT_PERIODO_NOME">
+    <descriptions/>
+    <attributes>
+      <attribute id="PERIODO" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Periodo"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="CDGMAT" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MAT"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="CDGMAT"/>
+      </attribute>
+      <attribute id="DSCMAT" hidden="false" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MAT - Descrição"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="DSCMAT"/>
+      </attribute>
+      <attribute id="CDGTRI" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TRI"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="CDGTRI"/>
+      </attribute>
+      <attribute id="DSCTRI" hidden="false" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TRI - Descrição"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="DSCTRI"/>
+      </attribute>
+      <attribute id="CDGPER" key="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PER"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="CDGPER"/>
+      </attribute>
+      <attribute id="DSCPER" hidden="false" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PER - Descrição"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="DSCPER"/>
+      </attribute>
+      <attribute id="CDGYTD" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YTD"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="CDGYTD"/>
+      </attribute>
+      <attribute id="DSCYTD" hidden="false" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YTD - Descrição"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_PERIODO_NOME" columnName="DSCYTD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

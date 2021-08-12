@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::COPYOFDIM_MKT_LABORATORIO" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Corporação/Laboratório"/>
+  <metadata changedAt="2018-06-02 16:27:36.229" createdAt="2018-06-02 16:27:36.229"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_LABORATORIO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_LABORATORIO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CORPORACAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CORPORACAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="DSCLABORATORIO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_LABORATORIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO" source="DSCLABORATORIO"/>
+      </input>
+      <input node="#HDW_IN_DM_MKT_CORPORACAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+      </input>
+      <joinAttribute name="CDGLABORATORIO"/>
+    </calculationView>
+  </calculationViews>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="HI_CORPORACAO" aggregateAllNodes="true" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_ONLY">
+    <descriptions defaultDescription="Corporação, Laboratório"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <levels>
+      <level levelAttribute="#CDGCORPORACAO" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CDGCORPORACAO"/>
+      <level levelAttribute="#CDGLABORATORIO" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CDGLABORATORIO"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="Join_1">
+    <descriptions defaultDescription="Corporação/Laboratório"/>
+    <attributes>
+      <attribute id="CDGCORPORACAO" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCCORPORACAO" displayAttribute="false">
+        <descriptions defaultDescription="Corporação"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGCORPORACAO"/>
+      </attribute>
+      <attribute id="DSCCORPORACAO" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Corporação"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCCORPORACAO"/>
+      </attribute>
+      <attribute id="CDGLABORATORIO" key="true" order="3" attributeHierarchyActive="false" descriptionColumnName="DSCLABORATORIO" displayAttribute="false">
+        <descriptions defaultDescription="Laboratório"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGLABORATORIO"/>
+      </attribute>
+      <attribute id="DSCLABORATORIO" hidden="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Laboratório"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCLABORATORIO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

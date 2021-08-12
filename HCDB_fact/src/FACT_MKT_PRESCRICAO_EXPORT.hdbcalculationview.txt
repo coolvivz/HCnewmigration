@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRESCRICAO_EXPORT" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="FACT_MKT_PRESCRICAO_EXPORT"/>
+  <metadata changedAt="2020-04-13 09:50:20.953"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="32"/>
+  <dataSources>
+    <DataSource id="HDW_IN_TR_MKT_PRESCRICAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="DATA"/>
+        <viewAttribute id="PX"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="HDW_IN_TR_MKT_PRESCRICAO"/>
+    <filter>(in (&quot;CDGCLASSE&quot;,'N04A0', 'N03A0', 'D10B0', 'N05C0'))</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGMARCA" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGMARCA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGCONCENTRACAO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGAPRESENTACAO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGFORMA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CDGESPECIALIDADE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGESPECIALIDADE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="CDGORIGEM" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGORIGEM"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGORIGEM"/>
+      </attribute>
+      <attribute id="CDGREGIAO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGREGIAO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="CDGLABORATORIO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGLABORATORIO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGLABORATORIO"/>
+      </attribute>
+      <attribute id="CDGCLASSE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CDGCLASSE"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CDGCLASSE"/>
+      </attribute>
+      <attribute id="DTPRESCRICAO" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DTPRESCRICAO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DTPRESCRICAO"/>
+      </attribute>
+      <attribute id="DATA" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DATA"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="PharmaMixCod" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PharmaMixCod"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="1">
+          <formula>&quot;CDGMARCA&quot; + '-' + &quot;CDGCONCENTRACAO&quot; + '-' + &quot;CDGAPRESENTACAO&quot; + '-' + &quot;CDGFORMA&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PX" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PX"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PX"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

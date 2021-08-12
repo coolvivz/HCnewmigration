@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_RANK" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="true" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="FACT_MKT_PRODUTO"/>
+  <metadata changedAt="2018-08-09 12:13:07.818"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="53"/>
+  <dataSources>
+    <DataSource id="FACT_MKT_PRODUTO_SEM_FILTRO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_SEM_FILTRO</resourceUri>
+    </DataSource>
+    <DataSource id="FACT_MAT01$$$$COPYOFFACT_MKT_PRODUTO$$">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_SEM_FILTRO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_LABORATORIO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FACT_MAT00">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMAT"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="PX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FACT_MKT_PRODUTO_SEM_FILTRO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMAT" source="CDGMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+      </input>
+      <filter>(&quot;CDGMAT&quot; ='MAT00')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="PX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FACT_MAT00">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+      </input>
+      <windowFunction>
+        <partitionViewAttributeName>CDGESPECIALIDADE</partitionViewAttributeName>
+        <order byViewAttributeName="PX" direction="DESC"/>
+        <rankThreshold>
+          <value>100000</value>
+        </rankThreshold>
+        <rankViewAttributeName>RANK_MAT00</rankViewAttributeName>
+      </windowFunction>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FACT_MAT01">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMAT"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="PX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FACT_MAT01$$$$COPYOFFACT_MKT_PRODUTO$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMAT" source="CDGMAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+      </input>
+      <filter>(&quot;CDGMAT&quot; ='MAT01')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#DIM_MKT_LABORATORIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+      </input>
+      <filter>(&quot;CDGCORPORACAO&quot; ='FQM')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:RankView" id="Rank_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="PX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FACT_MAT01">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+      </input>
+      <windowFunction>
+        <partitionViewAttributeName>CDGESPECIALIDADE</partitionViewAttributeName>
+        <order byViewAttributeName="PX" direction="DESC"/>
+        <rankThreshold>
+          <value>100000</value>
+        </rankThreshold>
+        <rankViewAttributeName>RANK_MAT01</rankViewAttributeName>
+      </windowFunction>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute id="RANK_MAT00"/>
+        <viewAttribute id="RANK_MAT01"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Rank_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK_MAT00" source="RANK_MAT00"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="RANK_MAT01" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Rank_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="RANK_MAT00" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK_MAT01" source="RANK_MAT01"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="CDGCORPORACAO"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="RANK_MAT00"/>
+        <viewAttribute id="RANK_MAT01"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK_MAT00" source="RANK_MAT00"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="RANK_MAT01" source="RANK_MAT01"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCORPORACAO" source="CDGCORPORACAO"/>
+      </input>
+      <joinAttribute name="CDGCORPORACAO"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions defaultDescription="FACT_MKT_PRODUTO"/>
+    <attributes>
+      <attribute id="CDGESPECIALIDADE" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCESPECIALIDADE" displayAttribute="false">
+        <descriptions defaultDescription="Especialidade"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="DSCESPECIALIDADE" hidden="true" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Especialidade"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCESPECIALIDADE"/>
+      </attribute>
+      <attribute id="CDGCORPORACAO" key="true" order="3" attributeHierarchyActive="false" descriptionColumnName="DSCCORPORACAO" displayAttribute="false">
+        <descriptions defaultDescription="Corporação"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGCORPORACAO"/>
+      </attribute>
+      <attribute id="DSCCORPORACAO" hidden="true" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Corporação"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCCORPORACAO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="RANK_MAT00" order="5" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Rank MAT00"/>
+        <measureMapping columnObjectName="Join_1" columnName="RANK_MAT00"/>
+      </measure>
+      <measure id="RANK_MAT01" order="6" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="Rank MAT01"/>
+        <measureMapping columnObjectName="Join_1" columnName="RANK_MAT01"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="175" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FACT_MAT00" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="455"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="377"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FACT_MAT01" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="455"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="252" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Rank_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="377"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="98" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

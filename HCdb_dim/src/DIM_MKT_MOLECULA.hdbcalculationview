@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MOLECULA" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_MOLECULA"/>
+  <metadata changedAt="2017-09-26 16:10:39.394"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_MOLECULA">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_MOLECULA</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="HDW_IN_DM_MKT_MOLECULA">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGMOLECULA" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCMOLECULA" displayAttribute="false">
+        <descriptions defaultDescription="Molécula"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGMOLECULA"/>
+      </attribute>
+      <attribute id="DSCMOLECULA" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Molécula"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="DSCMOLECULA"/>
+      </attribute>
+      <attribute id="CDGMARCA" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marca"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGRAIZ"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Concentracao"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO" key="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Apresentação"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA" key="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Forma"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CDGLABORATORIO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Laboratório"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_MOLECULA" columnName="CDGLABORATORIO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,62 @@
+{
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_IN_TR_MKT_PRESCRICAO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_PERIODO_ATUAL": {
+        "target": {
+            "schema": "S_TTY_MKT",
+            "object": "HDW_IN_DM_MKT_CUP_PERIODO_ATUAL"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM": {
+        "target": {
+            "schema": "S_TTY_MKT",
+            "object": "HDW_IN_DM_MKT_CUP_LABORATORIOS_FQM"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_MARCAS": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_IN_DM_MKT_MARCAS"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_FORMAS": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_IN_DM_MKT_FORMAS"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CONCENTRACAO": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_IN_DM_MKT_CONCENTRACAO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_REGIOES": {
+        "target": {
+            "schema": "S_TTY_MKT",
+            "object": "HDW_IN_DM_MKT_CUP_REGIOES"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_ESPECIALIDADE": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_IN_DM_MKT_ESPECIALIDADE"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_OUT_TR_MKT_PRESCRICAO": {
+        "target": {
+            "schema": "S_CUP_MKT",
+            "object": "HDW_OUT_TR_MKT_PRESCRICAO"
+        }
+    },
+    "grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_PERIODO_NOME": {
+        "target": {
+            "schema": "S_TTY_MKT",
+            "object": "HDW_IN_DM_MKT_PERIODO_NOME"
+        }
+    }
+}

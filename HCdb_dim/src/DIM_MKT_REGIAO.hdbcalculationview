@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIAO" applyPrivilegeType="NONE" cacheInvalidationPeriod="HOURLY" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_REGIAO"/>
+  <metadata changedAt="2017-10-09 17:24:50.627"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="42"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_REGIAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_REGIAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Regiao">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="DSCREGIAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_REGIAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCREGIAO" source="DSCREGIAO"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Regiao">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGREGIAO" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCREGIAO" displayAttribute="false">
+        <descriptions defaultDescription="Região"/>
+        <keyMapping columnObjectName="Regiao" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="DSCREGIAO" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Região"/>
+        <keyMapping columnObjectName="Regiao" columnName="DSCREGIAO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Regiao" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

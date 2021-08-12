@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_IP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_PERIODO_IP"/>
+  <metadata changedAt="2021-06-09 10:59:28.002"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="DIM_MKT_CLASSES">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CLASSES</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="DIM_MKT_CLASSES">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGCLASSES" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Classe"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CDGCLASSES"/>
+      </attribute>
+      <attribute id="DSCCLASSES" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="DSCCLASSES"/>
+      </attribute>
+      <attribute id="CDGCLASSE1" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Classe1"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CDGCLASSE1"/>
+      </attribute>
+      <attribute id="DSCCLASSE1" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe1"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="DSCCLASSE1"/>
+      </attribute>
+      <attribute id="CDGCLASSE2" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Classe2"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CDGCLASSE2"/>
+      </attribute>
+      <attribute id="DSCCLASSE2" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe2"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="DSCCLASSE2"/>
+      </attribute>
+      <attribute id="CDGCLASSE3" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Classe3"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CDGCLASSE3"/>
+      </attribute>
+      <attribute id="DSCCLASSE3" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe3"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="DSCCLASSE3"/>
+      </attribute>
+      <attribute id="CLASSE_I" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_I"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CLASSE_I"/>
+      </attribute>
+      <attribute id="CLASSE_II" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_II"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CLASSE_II"/>
+      </attribute>
+      <attribute id="CLASSE_III" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_III"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CLASSE_III"/>
+      </attribute>
+      <attribute id="CLASSE_IV" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_IV"/>
+        <keyMapping columnObjectName="DIM_MKT_CLASSES" columnName="CLASSE_IV"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="MEDIDA" hidden="false" order="13" semanticType="empty" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="MEDIDA"/>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="100"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_ESPECIALIDADE"/>
+  <metadata changedAt="2017-07-06 14:04:35.474" createdAt="2017-07-06 14:04:33.908"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_ESPECIALIDADE">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_ESPECIALIDADE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="HDW_IN_DM_MKT_ESPECIALIDADE">
+    <descriptions defaultDescription="DIM_MKT_ESPECIALIDADE"/>
+    <attributes>
+      <attribute id="CDGESPECIALIDADE" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCESPECIALIDADE" displayAttribute="false">
+        <descriptions defaultDescription="Especialidade"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_ESPECIALIDADE" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="DSCESPECIALIDADE" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc. Especialidade"/>
+        <keyMapping columnObjectName="HDW_IN_DM_MKT_ESPECIALIDADE" columnName="DSCESPECIALIDADE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

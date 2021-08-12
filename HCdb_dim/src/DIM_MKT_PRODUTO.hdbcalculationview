@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Marca, Concentração, Forma, Apresentação"/>
+  <metadata changedAt="2017-12-03 18:14:37.335"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="29"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_PRODUTO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_PRODUTO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_MOLECULA">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_MOLECULA</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="DSCPRODUTO"/>
+        <viewAttribute id="LCTOPRODUTO"/>
+        <viewAttribute id="FLG_ETICO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_PRODUTO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCPRODUTO" source="DSCPRODUTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LCTOPRODUTO" source="LCTOPRODUTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FLG_ETICO" source="FLG_ETICO"/>
+      </input>
+      <input node="#HDW_IN_DM_MKT_MOLECULA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGRAIZ"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+      </input>
+      <joinAttribute name="CDGMARCA"/>
+      <joinAttribute name="CDGCONCENTRACAO"/>
+      <joinAttribute name="CDGAPRESENTACAO"/>
+      <joinAttribute name="CDGFORMA"/>
+    </calculationView>
+  </calculationViews>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="HI_PRODUTO" aggregateAllNodes="true" cacheEnabled="true" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_ONLY">
+    <descriptions defaultDescription="Produto, Concentração, Apresentação, Forma"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <levels>
+      <level levelAttribute="#CDGMARCA" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CDGMARCA"/>
+      <level levelAttribute="#CDGCONCENTRACAO" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CDGCONCENTRACAO"/>
+      <level levelAttribute="#CDGAPRESENTACAO" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#CDGAPRESENTACAO"/>
+      <level levelAttribute="#CDGFORMA" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#CDGFORMA"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGMARCA" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Marca"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Concentração"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Apresentação"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Forma"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CDGMOLECULA" order="5" attributeHierarchyActive="false" descriptionColumnName="DSCMOLECULA" displayAttribute="false">
+        <descriptions defaultDescription="Molécula"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGMOLECULA"/>
+      </attribute>
+      <attribute id="DSCMOLECULA" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Molécula"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCMOLECULA"/>
+      </attribute>
+      <attribute id="DSCAPRESENTACAO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Produto - Apresentação"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCPRODUTO"/>
+      </attribute>
+      <attribute id="LCTOPRODUTO" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Lcto. Produto"/>
+        <keyMapping columnObjectName="Join_1" columnName="LCTOPRODUTO"/>
+      </attribute>
+      <attribute id="FLG_ETICO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Flag"/>
+        <keyMapping columnObjectName="Join_1" columnName="FLG_ETICO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="230"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

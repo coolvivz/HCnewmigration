@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_BU" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_MERCADO_BU_TIPO"/>
+  <metadata changedAt="2017-09-26 11:20:06.302"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="DIM_MKT_MERCADO_APRESENTACAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_APRESENTACAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MERCADO"/>
+        <viewAttribute id="UNID_NEGOCIO"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="MERCADO_BU" length="30" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;MERCADO&quot; + '_' + &quot;UNID_NEGOCIO&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="MERCADO_BU_DESC" length="100" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;MERCADO&quot; + ' / ' +  &quot;UNID_NEGOCIO&quot; </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#DIM_MKT_MERCADO_APRESENTACAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MERCADO" source="MERCADO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UNID_NEGOCIO" source="UNID_NEGOCIO"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Aggregation_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MERCADO_BU" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="MERCADO_BU_DESC" displayAttribute="false">
+        <descriptions defaultDescription="Mercado/Business Unit"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MERCADO_BU"/>
+      </attribute>
+      <attribute id="MERCADO_BU_DESC" hidden="true" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Mercado/Business Unit"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MERCADO_BU_DESC"/>
+      </attribute>
+      <attribute id="MERCADO" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mercado"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MERCADO"/>
+      </attribute>
+      <attribute id="UNID_NEGOCIO" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Unid.Negócio"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="UNID_NEGOCIO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

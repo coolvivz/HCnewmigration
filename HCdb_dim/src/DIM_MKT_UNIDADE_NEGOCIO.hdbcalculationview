@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_UNIDADE_NEGOCIO" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_MKT_UNIDADE_NEGOCIO"/>
+  <metadata changedAt="2017-10-09 16:02:00.448"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_UNIDADE_NEGOCIO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_UNIDADE_NEGOCIO</resourceUri>
+    </DataSource>
+    <DataSource id="Join_1$$$$HDW_IN_DM_MKT_UNIDADE_NEGOCIO$$">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_UNIDADE_NEGOCIO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute aggregationType="max" id="DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HDW_IN_DM_MKT_UNIDADE_NEGOCIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGUNIDADE_NEGOCIO"/>
+        <viewAttribute id="DSCUNIDADE_NEGOCIO"/>
+        <viewAttribute hidden="true" id="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1$$$$HDW_IN_DM_MKT_UNIDADE_NEGOCIO$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGUNIDADE_NEGOCIO" source="CDGUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCUNIDADE_NEGOCIO" source="DSCUNIDADE_NEGOCIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO" source="DATA_ATUALIZACAO"/>
+      </input>
+      <joinAttribute name="JOIN$DATA_ATUALIZACAO$DATA_ATUALIZACAO"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGUNIDADE_NEGOCIO" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCUNIDADE_NEGOCIO" displayAttribute="false">
+        <descriptions defaultDescription="Unidade Negócio"/>
+        <keyMapping columnObjectName="Join_1" columnName="CDGUNIDADE_NEGOCIO"/>
+      </attribute>
+      <attribute id="DSCUNIDADE_NEGOCIO" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Unidade Negócio"/>
+        <keyMapping columnObjectName="Join_1" columnName="DSCUNIDADE_NEGOCIO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="300"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

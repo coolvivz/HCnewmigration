@@ -1,0 +1,51 @@
+_schema-version: "2.1"
+ID: HCmigration
+version: 0.0.1
+modules:
+- name: HCdb_dim
+  type: hdb
+  path: HCdb_dim
+  requires:
+  - name: hdi_HCdb_dim
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: cross-container-service-1
+    group: SERVICE_REPLACEMENTS
+    properties:
+      key: ServiceName_1
+      service: ~{the-service-name}
+ 
+- name: HCDB_fact
+  type: hdb
+  path: HCDB_fact
+  requires:
+  - name: hdi_HCDB_fact
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name1}
+  - name: hdi_HCdb_dim
+  - name: cross-container-service-1
+    group: SERVICE_REPLACEMENTS
+    properties:
+      key: ServiceName_1
+      service: ~{the-service-name}
+resources:
+- name: hdi_HCdb_dim
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: HCDB_DIM
+  properties:
+    hdi-container-name: ${service-name}
+- name: hdi_HCDB_fact
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: HCDB_fact
+  properties:
+    hdi-container-name1: ${service-name}
+- name: cross-container-service-1
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: HCtrial
+  properties:
+    the-service-name: ${service-name}

@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_PRODUTO_AFO" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="true" dataCategory="CUBE" determineTextFuzzySearchEnablement="true" enforceSqlExecution="false" executionSemantic="UNDEFINED">
+  <origin/>
+  <descriptions defaultDescription="FACT_MKT_PRODUTO"/>
+  <metadata changedAt="2019-07-23 15:35:30.141"/>
+  <localVariables>
+    <variable id="IN_BU" parameter="true">
+      <descriptions defaultDescription="IN_BU"/>
+      <variableProperties datatype="VARCHAR" defaultValue="" length="10" mandatory="true" scale="0">
+        <valueDomain type="AttributeValue">
+          <externalLikeStructureName>grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_UNIDADE_NEGOCIO</externalLikeStructureName>
+          <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+          <externalLikeElementName>CDGUNIDADE_NEGOCIO</externalLikeElementName>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#FACT_MKT_LABORATORIO_SCRIPT">
+      <targetVariable name="IN_BU"/>
+      <localVariable>#IN_BU</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" forStarJoin="true">
+      <targetVariable name="IN_BU"/>
+      <localVariable>#IN_BU</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" forStarJoin="true">
+      <targetVariable name="IN_BU"/>
+      <localVariable>#IN_BU</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="37"/>
+  <dataSources>
+    <DataSource id="FACT_MKT_LABORATORIO_SCRIPT">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.Laboratorio::FACT_MKT_LABORATORIO_SCRIPT</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_TR_MKT_PRESCRICAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FACT_MKT_LABORATORIO_SCRIPT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="DATA"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute hidden="true" id="JOIN$CDGCONCENTRACAO$CDGCONCENTRACAO"/>
+        <viewAttribute hidden="true" id="JOIN$CDGMARCA$CDGMARCA"/>
+        <viewAttribute hidden="true" id="JOIN$CDGFORMA$CDGFORMA"/>
+        <viewAttribute hidden="true" id="JOIN$CDGAPRESENTACAO$CDGAPRESENTACAO"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGMARCA$CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGCONCENTRACAO$CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGAPRESENTACAO$CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGFORMA$CDGFORMA" source="CDGFORMA"/>
+      </input>
+      <input node="#HDW_IN_TR_MKT_PRESCRICAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGORIGEM" source="CDGORIGEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="DTPRESCRICAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA" source="DATA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGMARCA$CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGCONCENTRACAO$CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGAPRESENTACAO$CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CDGFORMA$CDGFORMA" source="CDGFORMA"/>
+      </input>
+      <joinAttribute name="JOIN$CDGMARCA$CDGMARCA"/>
+      <joinAttribute name="JOIN$CDGCONCENTRACAO$CDGCONCENTRACAO"/>
+      <joinAttribute name="JOIN$CDGAPRESENTACAO$CDGAPRESENTACAO"/>
+      <joinAttribute name="JOIN$CDGFORMA$CDGFORMA"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="DATA"/>
+        <viewAttribute aggregationType="sum" id="PX"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGORIGEM" source="CDGORIGEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="DTPRESCRICAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATA" source="DATA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Aggregation_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="DATA" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATA"/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="DATA"/>
+      </attribute>
+      <attribute id="DTPRESCRICAO" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DTPRESCRICAO"/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="DTPRESCRICAO"/>
+      </attribute>
+      <attribute id="DTPRESCRICAO$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="DTPRESCRICAO"/>
+      </attribute>
+      <attribute id="CDGMARCA$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="CDGFORMA$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="CDGESPECIALIDADE$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="CDGORIGEM$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGORIGEM"/>
+      </attribute>
+      <attribute id="CDGREGIAO$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGREGIAO"/>
+      </attribute>
+      <attribute id="CDGCLASSE$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGCLASSE"/>
+      </attribute>
+      <attribute id="CDGAPRESENTACAO$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_2" columnName="CDGAPRESENTACAO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PX" key="true" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PX"/>
+        <measureMapping columnObjectName="Aggregation_2" columnName="PX"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="PX_FQM" hidden="false" order="1" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="0">
+        <descriptions defaultDescription="PX FQM"/>
+        <formula>IF(&quot;CDGCORPORACAO&quot;='FQM',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_MAT00" hidden="false" order="5" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_MAT00"/>
+        <formula>IF(&quot;CDGMAT&quot; = 'MAT00',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_MAT01" hidden="false" order="6" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="0">
+        <descriptions defaultDescription="PX_MAT01"/>
+        <formula>IF(&quot;CDGMAT&quot; = 'MAT01',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_MAT02" hidden="false" order="7" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_MAT02"/>
+        <formula>IF(&quot;CDGMAT&quot; = 'MAT02',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_MAT03" hidden="false" order="8" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_MAT03"/>
+        <formula>IF(&quot;CDGMAT&quot; = 'MAT03',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_MAT04" hidden="false" order="9" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_MAT04"/>
+        <formula>IF(&quot;CDGMAT&quot; = 'MAT04',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_YTD00" hidden="false" order="10" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_YTD00"/>
+        <formula>IF(&quot;CDGYTD&quot; = 'YTD00',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_YTD01" hidden="false" order="11" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_YTD01"/>
+        <formula>IF(&quot;CDGYTD&quot; = 'YTD01',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_YTD02" hidden="false" order="12" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_YTD02"/>
+        <formula>IF(&quot;CDGYTD&quot; = 'YTD02',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_YTD03" hidden="false" order="13" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_YTD03"/>
+        <formula>IF(&quot;CDGYTD&quot; = 'YTD03',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_YTD04" hidden="false" order="14" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_YTD04"/>
+        <formula>IF(&quot;CDGYTD&quot; = 'YTD04',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI00" hidden="false" order="15" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI00"/>
+        <formula>IF (&quot;CDGTRI&quot; = 'TRI00',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI01" hidden="false" order="16" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI01"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI01',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI02" hidden="false" order="17" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI02"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI02',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI03" hidden="false" order="18" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI03"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI03',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI04" hidden="false" order="19" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI04"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI04',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI05" hidden="false" order="20" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI05"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI05',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI06" hidden="false" order="21" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI06"/>
+        <formula>IF(&quot;CDGTRI&quot;='TRI06',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI07" hidden="false" order="22" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI07"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI07',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI08" hidden="false" order="23" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI08"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI08',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI09" hidden="false" order="24" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI09"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI09',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI10" hidden="false" order="25" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI10"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI10',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI11" hidden="false" order="26" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI11"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI11',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI12" hidden="false" order="27" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI12"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI12',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI13" hidden="false" order="28" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI13"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI13',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI14" hidden="false" order="29" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI14"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI14',&quot;PX&quot;,0)</formula>
+      </measure>
+      <measure id="PX_TRI15" hidden="false" order="30" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI15"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI15',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_TRI16" hidden="false" order="31" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="PX_TRI16"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI16',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_TRI17" hidden="false" order="32" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="PX_TRI17"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI17',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_TRI18" hidden="false" order="33" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI18"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI18',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_TRI19" hidden="false" order="34" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_TRI19"/>
+        <formula>IF(&quot;CDGTRI&quot; = 'TRI19',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER00" hidden="false" order="35" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER00"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER00',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER01" hidden="false" order="36" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER01"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER01',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER02" hidden="false" order="37" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER02"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER02',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER03" hidden="false" order="38" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER03"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER03',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER04" hidden="false" order="39" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER04"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER04',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER05" hidden="false" order="40" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER05"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER05',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER06" hidden="false" order="41" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER06"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER06',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER07" hidden="false" order="42" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER07"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER07',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER08" hidden="false" order="43" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER08"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER08',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER09" hidden="false" order="44" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER09"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER09',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER10" hidden="false" order="45" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER10"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER10',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER11" hidden="false" order="46" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER11"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER11',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER12" hidden="false" order="47" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER12"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER12',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER13" hidden="false" order="48" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER13"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER13',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER14" hidden="false" order="49" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER14"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER14',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER15" hidden="false" order="50" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER15"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER15',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER16" hidden="false" order="51" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER16"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER16',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER17" hidden="false" order="52" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER17"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER17',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER18" hidden="false" order="53" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER18"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER18',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER19" hidden="false" order="54" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER19"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER19',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER20" hidden="false" order="55" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER20"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER20',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER21" hidden="false" order="56" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER21"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER21',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER22" hidden="false" order="57" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER22"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER22',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER23" hidden="false" order="58" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER23"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER23',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER24" hidden="false" order="59" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER24"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER24',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER25" hidden="false" order="60" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER25"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER25',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER26" hidden="false" order="61" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER26"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER26',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER27" hidden="false" order="62" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER27"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER27',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER28" hidden="false" order="63" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER28"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER28',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER29" hidden="false" order="64" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER29"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER29',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER30" hidden="false" order="65" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER30"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER30',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER31" hidden="false" order="66" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER31"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER31',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER32" hidden="false" order="67" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER32"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER32',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER33" hidden="false" order="68" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER33"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER33',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER34" hidden="false" order="69" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER34"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER34',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER35" hidden="false" order="70" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER35"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER35',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER36" hidden="false" order="71" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER36"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER36',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER37" hidden="false" order="72" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER37"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER37',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER38" hidden="false" order="73" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER38"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER38',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER39" hidden="false" order="74" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER39"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER39',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER40" hidden="false" order="75" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER40"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER40',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER41" hidden="false" order="76" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER41"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER41',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER42" hidden="false" order="77" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER42"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER42',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER43" hidden="false" order="78" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER43"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER43',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER44" hidden="false" order="79" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER44"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER44',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER45" hidden="false" order="80" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER45"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER45',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER46" hidden="false" order="81" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER46"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER46',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER47" hidden="false" order="82" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER47"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER47',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER48" hidden="false" order="83" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER48"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER48',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER49" hidden="false" order="84" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER49"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER49',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER50" hidden="false" order="85" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER50"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER50',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER51" hidden="false" order="86" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER51"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER51',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER52" hidden="false" order="87" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER52"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER52',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER53" hidden="false" order="88" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER53"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER53',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER54" hidden="false" order="89" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER54"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER54',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER55" hidden="false" order="90" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER55"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER55',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER56" hidden="false" order="91" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER56"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER56',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER57" hidden="false" order="92" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER57"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER57',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER58" hidden="false" order="93" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER58"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER58',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+      <measure id="PX_PER59" hidden="false" order="94" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15">
+        <descriptions defaultDescription="PX_PER59"/>
+        <formula>IF(&quot;CDGPER&quot; = 'PER59',&quot;PX&quot;,0)&#xD;
+</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME">
+        <attributes>
+          <attributeRef>#DTPRESCRICAO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>PERIODO</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="PERIODO" hidden="true"/>
+        </associatedAttributeFeatures>
+        <associatedHierarchyFeature hierarchyName="HI_PERIODO">
+          <joinProperties nodeElementName="HI_PERIODONode" expressionParameterName="HI_PERIODOExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MARCA">
+        <attributes>
+          <attributeRef>#CDGMARCA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGMARCAS</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CONCENTRACAO">
+        <attributes>
+          <attributeRef>#CDGCONCENTRACAO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGCONCENTRACAO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MKT_CONCENTRACAO_CDGCONCENTRACAO" attributeName="CDGCONCENTRACAO"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA">
+        <attributes>
+          <attributeRef>#CDGFORMA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGFORMAS</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE">
+        <attributes>
+          <attributeRef>#CDGESPECIALIDADE$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGESPECIALIDADE</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM">
+        <attributes>
+          <attributeRef>#CDGORIGEM$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGORIGEM</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_BU_FILTRO">
+        <attributes>
+          <attributeRef>#CDGREGIAO$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGREGIAO</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_MKT_REGIAO_REGIONAL_BU_FILTRO_CDGREGIAO" attributeName="CDGREGIAO"/>
+        </associatedAttributeFeatures>
+        <associatedHierarchyFeature hierarchyName="HI_REGIONAL">
+          <joinProperties nodeElementName="HI_REGIONALNode" expressionParameterName="HI_REGIONALExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES">
+        <attributes>
+          <attributeRef>#CDGCLASSE$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGCLASSES</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_CLASSE">
+          <joinProperties nodeElementName="HI_CLASSENode" expressionParameterName="HI_CLASSEExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO_3">
+        <attributes>
+          <attributeRef>#CDGMARCA$local</attributeRef>
+          <attributeRef>#CDGCONCENTRACAO$local</attributeRef>
+          <attributeRef>#CDGAPRESENTACAO$local</attributeRef>
+          <attributeRef>#CDGFORMA$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>CDGMARCA</attributeName>
+          <attributeName>CDGCONCENTRACAO</attributeName>
+          <attributeName>CDGAPRESENTACAO</attributeName>
+          <attributeName>CDGFORMA</attributeName>
+        </associatedAttributeNames>
+        <properties cardinality="CN_1" joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures/>
+        <associatedHierarchyFeature hierarchyName="HI_CORPORACAO">
+          <joinProperties nodeElementName="HI_CORPORACAONode" expressionParameterName="HI_CORPORACAOExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+        <associatedHierarchyFeature hierarchyName="HI_PRODUTO">
+          <joinProperties nodeElementName="HI_PRODUTONode" expressionParameterName="HI_PRODUTOExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="264" width="209"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="56" y="521"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="56" y="425"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="56" y="347"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Aggregation_2" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="636" y="300"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="646"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MARCA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="16"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CONCENTRACAO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="113"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="210"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="307"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="404"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_BU_FILTRO" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="909" y="501"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="465"/>
+      </shape>
+      <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO_3" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="192"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

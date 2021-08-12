@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CLASSES" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="Classe1, Classe2, Classe3, Classes"/>
+  <metadata changedAt="2020-06-07 17:37:41.337"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="HDW_IN_DM_MKT_CLASSES">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CLASSES</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CLASSE1">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CLASSE1</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CLASSE2">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CLASSE2</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CLASSE3">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.dim::HDW_IN_DM_MKT_CLASSE3</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCLASSES"/>
+        <viewAttribute id="DSCCLASSES"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CDGCLASSE1" length="1" expressionLanguage="COLUMN_ENGINE">
+          <formula>LEFTSTR(&quot;CDGCLASSES&quot;,1)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CDGCLASSE2" length="3" expressionLanguage="COLUMN_ENGINE">
+          <formula>LEFTSTR(&quot;CDGCLASSES&quot;,3)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CDGCLASSE3" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>LEFTSTR(&quot;CDGCLASSES&quot;,4)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#HDW_IN_DM_MKT_CLASSES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSES" source="CDGCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSES" source="DSCCLASSES"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="CLASSE1" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCLASSES"/>
+        <viewAttribute id="DSCCLASSES"/>
+        <viewAttribute id="CDGCLASSE1"/>
+        <viewAttribute id="DSCCLASSE1"/>
+        <viewAttribute id="CDGCLASSE2"/>
+        <viewAttribute id="CDGCLASSE3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSES" source="CDGCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSES" source="DSCCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE1" source="CDGCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE2" source="CDGCLASSE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE3" source="CDGCLASSE3"/>
+      </input>
+      <input node="#HDW_IN_DM_MKT_CLASSE1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE1" source="DSCCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE1" source="CDGCLASSE1"/>
+      </input>
+      <joinAttribute name="CDGCLASSE1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="CLASSE2" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCLASSES"/>
+        <viewAttribute id="DSCCLASSES"/>
+        <viewAttribute id="CDGCLASSE1"/>
+        <viewAttribute id="DSCCLASSE1"/>
+        <viewAttribute id="CDGCLASSE2"/>
+        <viewAttribute id="DSCCLASSE2"/>
+        <viewAttribute id="CDGCLASSE3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CLASSE1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSES" source="CDGCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSES" source="DSCCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE1" source="CDGCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE1" source="DSCCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE2" source="CDGCLASSE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE3" source="CDGCLASSE3"/>
+      </input>
+      <input node="#HDW_IN_DM_MKT_CLASSE2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE2" source="DSCCLASSE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE2" source="CDGCLASSE2"/>
+      </input>
+      <joinAttribute name="CDGCLASSE2"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="CLASSE3" cardinality="CN_1" joinOrder="OUTSIDE_IN" joinType="leftOuter" optimizeJoinColumns="true">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CDGCLASSES"/>
+        <viewAttribute id="DSCCLASSES"/>
+        <viewAttribute id="CDGCLASSE1"/>
+        <viewAttribute id="DSCCLASSE1"/>
+        <viewAttribute id="CDGCLASSE2"/>
+        <viewAttribute id="DSCCLASSE2"/>
+        <viewAttribute id="CDGCLASSE3"/>
+        <viewAttribute id="DSCCLASSE3"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CLASSE2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSES" source="CDGCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSES" source="DSCCLASSES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE1" source="CDGCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE1" source="DSCCLASSE1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE2" source="CDGCLASSE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE2" source="DSCCLASSE2"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE3" source="CDGCLASSE3"/>
+      </input>
+      <input node="#HDW_IN_DM_MKT_CLASSE3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCLASSE3" source="DSCCLASSE3"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE3" source="CDGCLASSE3"/>
+      </input>
+      <joinAttribute name="CDGCLASSE3"/>
+    </calculationView>
+  </calculationViews>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="HI_CLASSE" aggregateAllNodes="true" cacheEnabled="false" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_ONLY">
+    <descriptions defaultDescription="Classe1, Classe2, Classe3, Classes"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <levels>
+      <level levelAttribute="#CDGCLASSE1" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#CDGCLASSE1"/>
+      <level levelAttribute="#CDGCLASSE2" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#CDGCLASSE2"/>
+      <level levelAttribute="#CDGCLASSE3" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#CDGCLASSE3"/>
+      <level levelAttribute="#CDGCLASSES" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#CDGCLASSES"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="CLASSE3">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGCLASSES" key="true" order="1" attributeHierarchyActive="false" descriptionColumnName="DSCCLASSES" displayAttribute="false">
+        <descriptions defaultDescription="Classe"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="CDGCLASSES"/>
+      </attribute>
+      <attribute id="DSCCLASSES" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="DSCCLASSES"/>
+      </attribute>
+      <attribute id="CDGCLASSE1" order="3" attributeHierarchyActive="false" descriptionColumnName="DSCCLASSE1" displayAttribute="false">
+        <descriptions defaultDescription="Classe1"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="CDGCLASSE1"/>
+      </attribute>
+      <attribute id="DSCCLASSE1" hidden="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe1"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="DSCCLASSE1"/>
+      </attribute>
+      <attribute id="CDGCLASSE2" order="5" attributeHierarchyActive="false" descriptionColumnName="DSCCLASSE2" displayAttribute="false">
+        <descriptions defaultDescription="Classe2"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="CDGCLASSE2"/>
+      </attribute>
+      <attribute id="DSCCLASSE2" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe2"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="DSCCLASSE2"/>
+      </attribute>
+      <attribute id="CDGCLASSE3" order="7" attributeHierarchyActive="false" descriptionColumnName="DSCCLASSE3" displayAttribute="false">
+        <descriptions defaultDescription="Classe3"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="CDGCLASSE3"/>
+      </attribute>
+      <attribute id="DSCCLASSE3" hidden="true" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Desc.Classe3"/>
+        <keyMapping columnObjectName="CLASSE3" columnName="DSCCLASSE3"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CLASSE_I" hidden="false" order="9" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_I"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="60">
+          <formula>CONCAT(concat(&quot;CDGCLASSE1&quot;, ' - '),&quot;DSCCLASSE1&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLASSE_II" hidden="false" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_II"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="60">
+          <formula>CONCAT(CONCAT(&quot;CDGCLASSE2&quot;, ' - '),&quot;DSCCLASSE2&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLASSE_III" hidden="false" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_III"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="60">
+          <formula>CONCAT(CONCAT(&quot;CDGCLASSE3&quot;, ' - '),&quot;DSCCLASSE3&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CLASSE_IV" hidden="false" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_IV"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="60">
+          <formula>CONCAT(CONCAT(&quot;CDGCLASSES&quot;, ' - '),&quot;DSCCLASSES&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="610"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CLASSE1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="500"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CLASSE2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="CLASSE3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

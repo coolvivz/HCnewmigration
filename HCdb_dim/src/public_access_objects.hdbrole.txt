@@ -1,0 +1,217 @@
+{
+    "role": {
+        "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::PublicAccessObjects",
+        "object_privileges": [
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::COPYOFDIM_MKT_LABORATORIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::COPYOFDIM_MKT_REGIONAL_BU_FILTRO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CLASSES",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_CONCENTRACAO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ESPECIALIDADE_TTY",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FORMA_PRESCRICAO_CUSTOMIZED",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_FQM_LABORATORIOS",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_LABORATORIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_LABORATORIO_FQM_LABORATORIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_LABORATORIO_TTY",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MARCA",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_APRESENTACAO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_APRESENTACAO_BU_TIPO_FILTRO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MERCADO_BU",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_MOLECULA",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_ORIGEM",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_IP",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PERIODO_NOME",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO_2",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_PRODUTO_3",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIAO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAIS_TTY",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_BU_FILTRO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_REGIONAL_MERCADO_BU_FILTRO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_TIPO_MERCADO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "grupo_fqm.intmerc_prod.x_package.mkt.dim::DIM_MKT_UNIDADE_NEGOCIO",
+                "type": "VIEW",
+                "privileges": [
+                    "SELECT"
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,2183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="grupo_fqm.intmerc_prod.x_package.mkt.fact::FACT_MKT_CUP_CUSTOMIZED_FILTER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="FACT_MKT_CUP_CUSTOMIZED"/>
+  <metadata changedAt="2020-06-10 11:29:22.97"/>
+  <localVariables>
+    <variable id="IP_APRESENTACAO" parameter="true">
+      <descriptions defaultDescription="IP_APRESENTACAO"/>
+      <variableProperties datatype="VARCHAR" length="30" mandatory="false" scale="0">
+        <valueDomain type="AttributeValue">
+          <attribute name="COD_APRESENTACAO"/>
+        </valueDomain>
+        <selection multiLine="true" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="30"/>
+  <dataSources>
+    <DataSource id="HDW_IN_TR_MKT_PRESCRICAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_TR_MKT_PRESCRICAO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CUP_REGIOES">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_REGIOES</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CUP_PERIODO_ATUAL">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_PERIODO_ATUAL</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_LABORATORIO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_MARCAS">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_MARCAS</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_PRODUTO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_PRODUTO</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_FORMAS">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_FORMAS</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_CONCENTRACAO">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CONCENTRACAO</resourceUri>
+    </DataSource>
+    <DataSource id="DIM_MKT_CLASSES">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES</resourceUri>
+    </DataSource>
+    <DataSource id="HDW_IN_DM_MKT_ESPECIALIDADE">
+      <resourceUri>grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_ESPECIALIDADE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="HDW_IN_TR_MKT_PRESCRICAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="CDGPRODUTO"/>
+      </input>
+    <filter>(in (&quot;COD_APRESENTACAO&quot;,'$$IP_APRESENTACAO$$'))</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGORIGEM" source="CDGORIGEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="DTPRESCRICAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_CUP_REGIOES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="codigo"/>
+      </input>
+    <joinAttribute name="CDGREGIAO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGORIGEM"/>
+        <viewAttribute id="CDGREGIAO"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="DTPRESCRICAO"/>
+        <viewAttribute id="PX"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="CDGYTD"/>
+        <viewAttribute id="CDGPER"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD49" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGYTD&quot; ='YTD-49',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD37" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGYTD&quot; ='YTD-37',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD25" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGYTD&quot; ='YTD-25',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD13" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGYTD&quot;= 'YTD-13',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD1" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGYTD&quot;= 'YTD-1',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="60" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='60',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="59" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='59',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="58" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='58',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="57" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='57',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="56" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='56',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="55" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='55',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="54" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='54',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="53" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='53',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="52" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='52',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="51" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='51',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='50',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="49" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='49',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="48" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='48',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="47" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='47',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="46" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='46',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="45" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='45',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="44" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='44',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="43" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='43',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="42" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='42',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="41" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='41',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="40" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='40',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="39" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='39',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="38" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='38',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="37" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='37',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="36" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='36',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="35" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='35',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="34" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='34',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="33" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='33',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='32',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="31" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='31',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="30" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='30',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="29" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='29',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="28" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='28',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="27" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='27',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="26" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='26',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='25',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="24" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='24',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="23" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='23',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="22" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='22',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="21" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='21',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='20',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="19" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='19',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="18" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='18',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="17" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='17',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="16" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='16',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="15" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='15',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="14" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='14',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="13" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='13',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="12" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='12',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="11" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='11',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='10',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="09" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='9',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="08" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='8',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="07" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='7',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="06" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='6',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="05" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='5',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="04" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='4',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="03" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='3',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="02" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='2',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="01" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;CDGPER&quot; ='1',&quot;PX&quot;,0)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGORIGEM" source="CDGORIGEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGREGIAO" source="CDGREGIAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="DTPRESCRICAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PX" source="PX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_CUP_PERIODO_ATUAL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGYTD" source="CDGYTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGPER" source="CDGPER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DTPRESCRICAO" source="PERIODO"/>
+      </input>
+    <joinAttribute name="DTPRESCRICAO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute aggregationType="sum" id="YTD49"/>
+        <viewAttribute aggregationType="sum" id="YTD37"/>
+        <viewAttribute aggregationType="sum" id="YTD25"/>
+        <viewAttribute aggregationType="sum" id="YTD13"/>
+        <viewAttribute aggregationType="sum" id="YTD1"/>
+        <viewAttribute aggregationType="sum" id="60"/>
+        <viewAttribute aggregationType="sum" id="59"/>
+        <viewAttribute aggregationType="sum" id="58"/>
+        <viewAttribute aggregationType="sum" id="57"/>
+        <viewAttribute aggregationType="sum" id="56"/>
+        <viewAttribute aggregationType="sum" id="55"/>
+        <viewAttribute aggregationType="sum" id="54"/>
+        <viewAttribute aggregationType="sum" id="53"/>
+        <viewAttribute aggregationType="sum" id="52"/>
+        <viewAttribute aggregationType="sum" id="51"/>
+        <viewAttribute aggregationType="sum" id="50"/>
+        <viewAttribute aggregationType="sum" id="49"/>
+        <viewAttribute aggregationType="sum" id="48"/>
+        <viewAttribute aggregationType="sum" id="47"/>
+        <viewAttribute aggregationType="sum" id="46"/>
+        <viewAttribute aggregationType="sum" id="45"/>
+        <viewAttribute aggregationType="sum" id="44"/>
+        <viewAttribute aggregationType="sum" id="43"/>
+        <viewAttribute aggregationType="sum" id="42"/>
+        <viewAttribute aggregationType="sum" id="41"/>
+        <viewAttribute aggregationType="sum" id="40"/>
+        <viewAttribute aggregationType="sum" id="39"/>
+        <viewAttribute aggregationType="sum" id="38"/>
+        <viewAttribute aggregationType="sum" id="37"/>
+        <viewAttribute aggregationType="sum" id="36"/>
+        <viewAttribute aggregationType="sum" id="35"/>
+        <viewAttribute aggregationType="sum" id="34"/>
+        <viewAttribute aggregationType="sum" id="33"/>
+        <viewAttribute aggregationType="sum" id="32"/>
+        <viewAttribute aggregationType="sum" id="31"/>
+        <viewAttribute aggregationType="sum" id="30"/>
+        <viewAttribute aggregationType="sum" id="29"/>
+        <viewAttribute aggregationType="sum" id="28"/>
+        <viewAttribute aggregationType="sum" id="27"/>
+        <viewAttribute aggregationType="sum" id="26"/>
+        <viewAttribute aggregationType="sum" id="25"/>
+        <viewAttribute aggregationType="sum" id="24"/>
+        <viewAttribute aggregationType="sum" id="23"/>
+        <viewAttribute aggregationType="sum" id="22"/>
+        <viewAttribute aggregationType="sum" id="21"/>
+        <viewAttribute aggregationType="sum" id="20"/>
+        <viewAttribute aggregationType="sum" id="19"/>
+        <viewAttribute aggregationType="sum" id="18"/>
+        <viewAttribute aggregationType="sum" id="17"/>
+        <viewAttribute aggregationType="sum" id="16"/>
+        <viewAttribute aggregationType="sum" id="15"/>
+        <viewAttribute aggregationType="sum" id="14"/>
+        <viewAttribute aggregationType="sum" id="13"/>
+        <viewAttribute aggregationType="sum" id="12"/>
+        <viewAttribute aggregationType="sum" id="11"/>
+        <viewAttribute aggregationType="sum" id="10"/>
+        <viewAttribute aggregationType="sum" id="09"/>
+        <viewAttribute aggregationType="sum" id="08"/>
+        <viewAttribute aggregationType="sum" id="07"/>
+        <viewAttribute aggregationType="sum" id="06"/>
+        <viewAttribute aggregationType="sum" id="05"/>
+        <viewAttribute aggregationType="sum" id="04"/>
+        <viewAttribute aggregationType="sum" id="03"/>
+        <viewAttribute aggregationType="sum" id="02"/>
+        <viewAttribute aggregationType="sum" id="01"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_2"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="YTD49"/>
+        <viewAttribute id="YTD37"/>
+        <viewAttribute id="YTD25"/>
+        <viewAttribute id="YTD13"/>
+        <viewAttribute id="YTD1"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD_01" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;YTD1&quot;),0,&quot;YTD1&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD_13" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;YTD13&quot;),0,&quot;YTD13&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD_25" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(&quot;YTD25&quot;),0,&quot;YTD25&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD_37" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(isNull(&quot;YTD37&quot;),0,&quot;YTD37&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="YTD_49" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(isNull(&quot;YTD49&quot;),0,&quot;YTD49&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD49" source="YTD49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD37" source="YTD37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD25" source="YTD25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD13" source="YTD13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD1" source="YTD1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+      </input>
+      <input node="DIM_MKT_LABORATORIO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+      </input>
+    <joinAttribute name="CDGLABORATORIO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="YTD_49"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_01"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_MARCAS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCAS"/>
+      </input>
+    <joinAttribute name="CDGMARCA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="YTD_01"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_49"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+      </input>
+      <input node="DIM_MKT_PRODUTO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+      </input>
+    <joinAttribute name="CDGMARCA"/>
+    <joinAttribute name="CDGCONCENTRACAO"/>
+    <joinAttribute name="CDGAPRESENTACAO"/>
+    <joinAttribute name="CDGFORMA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="FORMAF"/>
+        <viewAttribute id="YTD_49"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_01"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_FORMAS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FORMAF" source="DSCFORMAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMAS"/>
+      </input>
+    <joinAttribute name="CDGFORMA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="DSCFORMAS"/>
+        <viewAttribute id="NOME"/>
+        <viewAttribute id="YTD_01"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_49"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCFORMAS" source="FORMAF"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_CONCENTRACAO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CODIGO"/>
+      </input>
+    <joinAttribute name="CDGCONCENTRACAO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="DSCFORMAS"/>
+        <viewAttribute id="NOME"/>
+        <viewAttribute id="CLASSE_I"/>
+        <viewAttribute id="CLASSE_II"/>
+        <viewAttribute id="CLASSE_III"/>
+        <viewAttribute id="CLASSE_IV"/>
+        <viewAttribute id="YTD_01"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_49"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCFORMAS" source="DSCFORMAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+      </input>
+      <input node="DIM_MKT_CLASSES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_I" source="CLASSE_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_II" source="CLASSE_II"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_III" source="CLASSE_III"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_IV" source="CLASSE_IV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSES"/>
+      </input>
+    <joinAttribute name="CDGCLASSE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="CN_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="CDGMARCA"/>
+        <viewAttribute id="CDGCONCENTRACAO"/>
+        <viewAttribute id="CDGAPRESENTACAO"/>
+        <viewAttribute id="CDGFORMA"/>
+        <viewAttribute id="CDGESPECIALIDADE"/>
+        <viewAttribute id="CDGLABORATORIO"/>
+        <viewAttribute id="CDGCLASSE"/>
+        <viewAttribute id="COD_GruReg"/>
+        <viewAttribute id="Descr_GruReg"/>
+        <viewAttribute id="COD_APRESENTACAO"/>
+        <viewAttribute id="60"/>
+        <viewAttribute id="59"/>
+        <viewAttribute id="58"/>
+        <viewAttribute id="57"/>
+        <viewAttribute id="56"/>
+        <viewAttribute id="55"/>
+        <viewAttribute id="54"/>
+        <viewAttribute id="53"/>
+        <viewAttribute id="52"/>
+        <viewAttribute id="51"/>
+        <viewAttribute id="50"/>
+        <viewAttribute id="49"/>
+        <viewAttribute id="48"/>
+        <viewAttribute id="47"/>
+        <viewAttribute id="46"/>
+        <viewAttribute id="45"/>
+        <viewAttribute id="44"/>
+        <viewAttribute id="43"/>
+        <viewAttribute id="42"/>
+        <viewAttribute id="41"/>
+        <viewAttribute id="40"/>
+        <viewAttribute id="39"/>
+        <viewAttribute id="38"/>
+        <viewAttribute id="37"/>
+        <viewAttribute id="36"/>
+        <viewAttribute id="35"/>
+        <viewAttribute id="34"/>
+        <viewAttribute id="33"/>
+        <viewAttribute id="32"/>
+        <viewAttribute id="31"/>
+        <viewAttribute id="30"/>
+        <viewAttribute id="29"/>
+        <viewAttribute id="28"/>
+        <viewAttribute id="27"/>
+        <viewAttribute id="26"/>
+        <viewAttribute id="25"/>
+        <viewAttribute id="24"/>
+        <viewAttribute id="23"/>
+        <viewAttribute id="22"/>
+        <viewAttribute id="21"/>
+        <viewAttribute id="20"/>
+        <viewAttribute id="19"/>
+        <viewAttribute id="18"/>
+        <viewAttribute id="17"/>
+        <viewAttribute id="16"/>
+        <viewAttribute id="15"/>
+        <viewAttribute id="14"/>
+        <viewAttribute id="13"/>
+        <viewAttribute id="12"/>
+        <viewAttribute id="11"/>
+        <viewAttribute id="10"/>
+        <viewAttribute id="09"/>
+        <viewAttribute id="08"/>
+        <viewAttribute id="07"/>
+        <viewAttribute id="06"/>
+        <viewAttribute id="05"/>
+        <viewAttribute id="04"/>
+        <viewAttribute id="03"/>
+        <viewAttribute id="02"/>
+        <viewAttribute id="01"/>
+        <viewAttribute id="DSCCORPORACAO"/>
+        <viewAttribute id="DSCLABORATORIO_NEW"/>
+        <viewAttribute id="DSCMARCAS"/>
+        <viewAttribute id="DSCAPRESENTACAO"/>
+        <viewAttribute id="CDGMOLECULA"/>
+        <viewAttribute id="DSCMOLECULA"/>
+        <viewAttribute id="DSCFORMAS"/>
+        <viewAttribute id="NOME"/>
+        <viewAttribute id="CLASSE_I"/>
+        <viewAttribute id="CLASSE_II"/>
+        <viewAttribute id="CLASSE_III"/>
+        <viewAttribute id="CLASSE_IV"/>
+        <viewAttribute id="DSCESPECIALIDADE"/>
+        <viewAttribute id="YTD_01"/>
+        <viewAttribute id="YTD_13"/>
+        <viewAttribute id="YTD_25"/>
+        <viewAttribute id="YTD_37"/>
+        <viewAttribute id="YTD_49"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMARCA" source="CDGMARCA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCONCENTRACAO" source="CDGCONCENTRACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGAPRESENTACAO" source="CDGAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGFORMA" source="CDGFORMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGLABORATORIO" source="CDGLABORATORIO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGCLASSE" source="CDGCLASSE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_GruReg" source="COD_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Descr_GruReg" source="Descr_GruReg"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COD_APRESENTACAO" source="COD_APRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="60" source="60"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="59" source="59"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="58" source="58"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="57" source="57"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="56" source="56"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="55" source="55"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="54" source="54"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="53" source="53"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="52" source="52"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="51" source="51"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="50" source="50"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="49" source="49"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="48" source="48"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="47" source="47"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="46" source="46"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="45" source="45"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="44" source="44"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="43" source="43"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="42" source="42"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="41" source="41"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="40" source="40"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="39" source="39"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="38" source="38"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="37" source="37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="36" source="36"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="35" source="35"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="34" source="34"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="33" source="33"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="32" source="32"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="31" source="31"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="30" source="30"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="29" source="29"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="28" source="28"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="27" source="27"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="26" source="26"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="25" source="25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="24" source="24"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="23" source="23"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="22" source="22"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="21" source="21"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="20" source="20"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="19" source="19"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="18" source="18"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="17" source="17"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="16" source="16"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="15" source="15"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="14" source="14"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="13" source="13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="12" source="12"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="11" source="11"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="10" source="10"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="09" source="09"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="08" source="08"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="07" source="07"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="06" source="06"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="05" source="05"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="04" source="04"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="03" source="03"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="02" source="02"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="01" source="01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCCORPORACAO" source="DSCCORPORACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCLABORATORIO_NEW" source="DSCLABORATORIO_NEW"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMARCAS" source="DSCMARCAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCAPRESENTACAO" source="DSCAPRESENTACAO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGMOLECULA" source="CDGMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCMOLECULA" source="DSCMOLECULA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCFORMAS" source="DSCFORMAS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_I" source="CLASSE_I"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_II" source="CLASSE_II"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_III" source="CLASSE_III"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CLASSE_IV" source="CLASSE_IV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_01" source="YTD_01"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_13" source="YTD_13"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_25" source="YTD_25"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_37" source="YTD_37"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YTD_49" source="YTD_49"/>
+      </input>
+      <input node="HDW_IN_DM_MKT_ESPECIALIDADE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DSCESPECIALIDADE" source="DSCESPECIALIDADE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CDGESPECIALIDADE" source="CDGESPECIALIDADE"/>
+      </input>
+    <joinAttribute name="CDGESPECIALIDADE"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_9">
+    <descriptions/>
+    <attributes>
+      <attribute id="CDGLABORATORIO" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_LAB"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGLABORATORIO"/>
+      </attribute>
+      <attribute id="DSCLABORATORIO_NEW" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LABORATORIOS"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCLABORATORIO_NEW"/>
+      </attribute>
+      <attribute id="DSCCORPORACAO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CORPORACAO"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCCORPORACAO"/>
+      </attribute>
+      <attribute id="CDGMARCA" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_PRODUTO"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGMARCA"/>
+      </attribute>
+      <attribute id="DSCMARCAS" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PRODUTO"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCMARCAS"/>
+      </attribute>
+      <attribute id="COD_APRESENTACAO" key="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_APRESENTACAO"/>
+        <keyMapping columnObjectName="Join_9" columnName="COD_APRESENTACAO"/>
+      </attribute>
+      <attribute id="DSCAPRESENTACAO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="APRESENTACAO"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCAPRESENTACAO"/>
+      </attribute>
+      <attribute id="CDGMOLECULA" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_MOLECULA"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGMOLECULA"/>
+      </attribute>
+      <attribute id="DSCMOLECULA" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MOLECULA"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCMOLECULA"/>
+      </attribute>
+      <attribute id="CDGFORMA" key="true" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_FORMAF"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGFORMA"/>
+      </attribute>
+      <attribute id="DSCFORMAS" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FORMAF"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCFORMAS"/>
+      </attribute>
+      <attribute id="CDGCONCENTRACAO" key="true" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_CONCENTRACAO"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGCONCENTRACAO"/>
+      </attribute>
+      <attribute id="NOME" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONCENTRACAO"/>
+        <keyMapping columnObjectName="Join_9" columnName="NOME"/>
+      </attribute>
+      <attribute id="CLASSE_I" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_I"/>
+        <keyMapping columnObjectName="Join_9" columnName="CLASSE_I"/>
+      </attribute>
+      <attribute id="CLASSE_II" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_II"/>
+        <keyMapping columnObjectName="Join_9" columnName="CLASSE_II"/>
+      </attribute>
+      <attribute id="CLASSE_III" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_III"/>
+        <keyMapping columnObjectName="Join_9" columnName="CLASSE_III"/>
+      </attribute>
+      <attribute id="CLASSE_IV" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CLASSE_IV"/>
+        <keyMapping columnObjectName="Join_9" columnName="CLASSE_IV"/>
+      </attribute>
+      <attribute id="CDGESPECIALIDADE" key="true" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_ESPECIALIDADE"/>
+        <keyMapping columnObjectName="Join_9" columnName="CDGESPECIALIDADE"/>
+      </attribute>
+      <attribute id="DSCESPECIALIDADE" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ESPECIALIDADES"/>
+        <keyMapping columnObjectName="Join_9" columnName="DSCESPECIALIDADE"/>
+      </attribute>
+      <attribute id="COD_GruReg" key="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COD_GruReg"/>
+        <keyMapping columnObjectName="Join_9" columnName="COD_GruReg"/>
+      </attribute>
+      <attribute id="Descr_GruReg" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Descr_GruReg"/>
+        <keyMapping columnObjectName="Join_9" columnName="Descr_GruReg"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="YTD_49" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD-49"/>
+        <measureMapping columnObjectName="Join_9" columnName="YTD_49"/>
+      </measure>
+      <measure id="YTD_37" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD-37"/>
+        <measureMapping columnObjectName="Join_9" columnName="YTD_37"/>
+      </measure>
+      <measure id="YTD_25" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD-25"/>
+        <measureMapping columnObjectName="Join_9" columnName="YTD_25"/>
+      </measure>
+      <measure id="YTD_13" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD-13"/>
+        <measureMapping columnObjectName="Join_9" columnName="YTD_13"/>
+      </measure>
+      <measure id="YTD_01" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="YTD-01"/>
+        <measureMapping columnObjectName="Join_9" columnName="YTD_01"/>
+      </measure>
+      <measure id="60" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="60"/>
+        <measureMapping columnObjectName="Join_9" columnName="60"/>
+      </measure>
+      <measure id="59" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="59"/>
+        <measureMapping columnObjectName="Join_9" columnName="59"/>
+      </measure>
+      <measure id="58" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="58"/>
+        <measureMapping columnObjectName="Join_9" columnName="58"/>
+      </measure>
+      <measure id="57" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="57"/>
+        <measureMapping columnObjectName="Join_9" columnName="57"/>
+      </measure>
+      <measure id="56" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="56"/>
+        <measureMapping columnObjectName="Join_9" columnName="56"/>
+      </measure>
+      <measure id="55" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="55"/>
+        <measureMapping columnObjectName="Join_9" columnName="55"/>
+      </measure>
+      <measure id="54" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="54"/>
+        <measureMapping columnObjectName="Join_9" columnName="54"/>
+      </measure>
+      <measure id="53" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="53"/>
+        <measureMapping columnObjectName="Join_9" columnName="53"/>
+      </measure>
+      <measure id="52" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="52"/>
+        <measureMapping columnObjectName="Join_9" columnName="52"/>
+      </measure>
+      <measure id="51" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="51"/>
+        <measureMapping columnObjectName="Join_9" columnName="51"/>
+      </measure>
+      <measure id="50" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="50"/>
+        <measureMapping columnObjectName="Join_9" columnName="50"/>
+      </measure>
+      <measure id="49" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="49"/>
+        <measureMapping columnObjectName="Join_9" columnName="49"/>
+      </measure>
+      <measure id="48" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="48"/>
+        <measureMapping columnObjectName="Join_9" columnName="48"/>
+      </measure>
+      <measure id="47" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="47"/>
+        <measureMapping columnObjectName="Join_9" columnName="47"/>
+      </measure>
+      <measure id="46" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="46"/>
+        <measureMapping columnObjectName="Join_9" columnName="46"/>
+      </measure>
+      <measure id="45" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="45"/>
+        <measureMapping columnObjectName="Join_9" columnName="45"/>
+      </measure>
+      <measure id="44" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="44"/>
+        <measureMapping columnObjectName="Join_9" columnName="44"/>
+      </measure>
+      <measure id="43" order="44" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="43"/>
+        <measureMapping columnObjectName="Join_9" columnName="43"/>
+      </measure>
+      <measure id="42" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="42"/>
+        <measureMapping columnObjectName="Join_9" columnName="42"/>
+      </measure>
+      <measure id="41" order="46" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="41"/>
+        <measureMapping columnObjectName="Join_9" columnName="41"/>
+      </measure>
+      <measure id="40" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="40"/>
+        <measureMapping columnObjectName="Join_9" columnName="40"/>
+      </measure>
+      <measure id="39" order="48" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="39"/>
+        <measureMapping columnObjectName="Join_9" columnName="39"/>
+      </measure>
+      <measure id="38" order="49" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="38"/>
+        <measureMapping columnObjectName="Join_9" columnName="38"/>
+      </measure>
+      <measure id="37" order="50" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="37"/>
+        <measureMapping columnObjectName="Join_9" columnName="37"/>
+      </measure>
+      <measure id="36" order="51" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="36"/>
+        <measureMapping columnObjectName="Join_9" columnName="36"/>
+      </measure>
+      <measure id="35" order="52" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="35"/>
+        <measureMapping columnObjectName="Join_9" columnName="35"/>
+      </measure>
+      <measure id="34" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="34"/>
+        <measureMapping columnObjectName="Join_9" columnName="34"/>
+      </measure>
+      <measure id="33" order="54" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="33"/>
+        <measureMapping columnObjectName="Join_9" columnName="33"/>
+      </measure>
+      <measure id="32" order="55" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="32"/>
+        <measureMapping columnObjectName="Join_9" columnName="32"/>
+      </measure>
+      <measure id="31" order="56" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="31"/>
+        <measureMapping columnObjectName="Join_9" columnName="31"/>
+      </measure>
+      <measure id="30" order="57" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="30"/>
+        <measureMapping columnObjectName="Join_9" columnName="30"/>
+      </measure>
+      <measure id="29" order="58" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="29"/>
+        <measureMapping columnObjectName="Join_9" columnName="29"/>
+      </measure>
+      <measure id="28" order="59" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="28"/>
+        <measureMapping columnObjectName="Join_9" columnName="28"/>
+      </measure>
+      <measure id="27" order="60" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="27"/>
+        <measureMapping columnObjectName="Join_9" columnName="27"/>
+      </measure>
+      <measure id="26" order="61" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="26"/>
+        <measureMapping columnObjectName="Join_9" columnName="26"/>
+      </measure>
+      <measure id="25" order="62" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="25"/>
+        <measureMapping columnObjectName="Join_9" columnName="25"/>
+      </measure>
+      <measure id="24" order="63" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="24"/>
+        <measureMapping columnObjectName="Join_9" columnName="24"/>
+      </measure>
+      <measure id="23" order="64" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="23"/>
+        <measureMapping columnObjectName="Join_9" columnName="23"/>
+      </measure>
+      <measure id="22" order="65" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="22"/>
+        <measureMapping columnObjectName="Join_9" columnName="22"/>
+      </measure>
+      <measure id="21" order="66" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="21"/>
+        <measureMapping columnObjectName="Join_9" columnName="21"/>
+      </measure>
+      <measure id="20" order="67" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="20"/>
+        <measureMapping columnObjectName="Join_9" columnName="20"/>
+      </measure>
+      <measure id="19" order="68" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="19"/>
+        <measureMapping columnObjectName="Join_9" columnName="19"/>
+      </measure>
+      <measure id="18" order="69" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="18"/>
+        <measureMapping columnObjectName="Join_9" columnName="18"/>
+      </measure>
+      <measure id="17" order="70" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="17"/>
+        <measureMapping columnObjectName="Join_9" columnName="17"/>
+      </measure>
+      <measure id="16" order="71" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="16"/>
+        <measureMapping columnObjectName="Join_9" columnName="16"/>
+      </measure>
+      <measure id="15" order="72" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="15"/>
+        <measureMapping columnObjectName="Join_9" columnName="15"/>
+      </measure>
+      <measure id="14" order="73" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="14"/>
+        <measureMapping columnObjectName="Join_9" columnName="14"/>
+      </measure>
+      <measure id="13" order="74" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="13"/>
+        <measureMapping columnObjectName="Join_9" columnName="13"/>
+      </measure>
+      <measure id="12" order="75" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="12"/>
+        <measureMapping columnObjectName="Join_9" columnName="12"/>
+      </measure>
+      <measure id="11" order="76" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="11"/>
+        <measureMapping columnObjectName="Join_9" columnName="11"/>
+      </measure>
+      <measure id="10" order="77" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="10"/>
+        <measureMapping columnObjectName="Join_9" columnName="10"/>
+      </measure>
+      <measure id="09" order="78" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="09"/>
+        <measureMapping columnObjectName="Join_9" columnName="09"/>
+      </measure>
+      <measure id="08" order="79" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="08"/>
+        <measureMapping columnObjectName="Join_9" columnName="08"/>
+      </measure>
+      <measure id="07" order="80" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="07"/>
+        <measureMapping columnObjectName="Join_9" columnName="07"/>
+      </measure>
+      <measure id="06" order="81" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="06"/>
+        <measureMapping columnObjectName="Join_9" columnName="06"/>
+      </measure>
+      <measure id="05" order="82" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="05"/>
+        <measureMapping columnObjectName="Join_9" columnName="05"/>
+      </measure>
+      <measure id="04" order="83" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="04"/>
+        <measureMapping columnObjectName="Join_9" columnName="04"/>
+      </measure>
+      <measure id="03" order="84" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="03"/>
+        <measureMapping columnObjectName="Join_9" columnName="03"/>
+      </measure>
+      <measure id="02" order="85" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="02"/>
+        <measureMapping columnObjectName="Join_9" columnName="02"/>
+      </measure>
+      <measure id="01" order="86" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="01"/>
+        <measureMapping columnObjectName="Join_9" columnName="01"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="1107"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="1011"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_REGIOES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="915"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CUP_PERIODO_ATUAL" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="837"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="741"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_LABORATORIO" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_MARCAS" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_PRODUTO" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_FORMAS" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_CONCENTRACAO" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact.dim::DIM_MKT_CLASSES" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="grupo_fqm.intmerc_prod.x_package.mkt.fact::HDW_IN_DM_MKT_ESPECIALIDADE" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
